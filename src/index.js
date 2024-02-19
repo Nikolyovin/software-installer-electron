@@ -56,8 +56,8 @@ app.on('activate', () => {
 })
 
 // Обработка сообщения для открытия консоли разработчика
-ipcMain.on('array-from-ui', (array) => {
-  console.log(array)
+ipcMain.on('array-from-ui', (event, array) => {
+  console.log('array:', array)
   // intellectInstaller()
   // shell.openPath(app.getPath('home'));
 })
