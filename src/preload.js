@@ -4,7 +4,7 @@ contextBridge.exposeInMainWorld('electron', {
   // openHomeFolder: () => {
   //   ipcRenderer.send('open-home-folder');
   // }
-  sendArray: (array) => {
-    ipcRenderer.send('array-from-ui', array)
+  sendArray: (map) => {
+    ipcRenderer.send('map-from-ui', map)
   },
 })

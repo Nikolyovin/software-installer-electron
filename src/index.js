@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain, shell } = require('electron')
 const path = require('path')
-const intellectInstaller = require('./installer')
+const { intellectInstaller } = require('./installer')
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -55,9 +55,16 @@ app.on('activate', () => {
   }
 })
 
-// Обработка сообщения для открытия консоли разработчика
-ipcMain.on('array-from-ui', (event, array) => {
-  console.log('array:', array)
-  // intellectInstaller()
-  // shell.openPath(app.getPath('home'));
+ipcMain.on('map-from-ui', (event, map) => {
+  console.log('map', map)
+  if (map.get('IntellectV')) {
+    console.log('IntellectV', map.get('IntellectV'))
+    intellectInstaller()
+  } else if (map.get('IntellectS')) {
+    console.log('IntellectS', map.get('IntellectS'))
+  } else if (map.get('VNC')) {
+    console.log('VNC', map.get('VNC'))
+  } else if (map.get('Kaspersky')) {
+    console.log('Kaspersky', map.get('Kaspersky'))
+  }
 })
