@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain, shell } = require('electron')
 const path = require('path')
-const { intellectInstaller } = require('./installer')
+const { intellectInstaller, vncInstaller } = require('./installer')
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -64,6 +64,7 @@ ipcMain.on('map-from-ui', (event, map) => {
     console.log('IntellectS', map.get('IntellectS'))
   } else if (map.get('VNC')) {
     console.log('VNC', map.get('VNC'))
+    vncInstaller()
   } else if (map.get('Kaspersky')) {
     console.log('Kaspersky', map.get('Kaspersky'))
   }
